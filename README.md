@@ -9,7 +9,7 @@
 
 **Sistema de chat anónimo con cifrado end-to-end, intercambio seguro de archivos y auto-eliminación**
 
-[🚀 Demo en Vivo](https://write-ghost.netlify.app) | [📖 English](README.en.md) | [🔧 Instalación](#instalación-y-configuración)
+[🚀 Demo en Vivo](https://write-ghost.netlify.app) | [📖 English](README.en.md) | [🔧 Instalación](#-instalación-y-configuración)
 
 </div>
 
