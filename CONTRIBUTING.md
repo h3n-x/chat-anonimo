@@ -26,13 +26,17 @@
 
 ### 🍴 **Fork del Repositorio**
 ```bash
-# 1. Fork en GitHub (botón "Fork" en la página del repo)
-# 2. Clonar tu fork
-git clone https://github.com/TU-USUARIO/chat-anonimo.git
-cd chat-anonimo
+# Dependiendo de lo que quieras contribuir:
 
-# 3. Agregar upstream
-git remote add upstream https://github.com/h3n-x/chat-anonimo.git
+# Para Backend:
+git clone https://github.com/TU-USUARIO/chat-backend.git
+cd chat-backend
+git remote add upstream https://github.com/h3n-x/chat-backend.git
+
+# Para Frontend:
+git clone https://github.com/TU-USUARIO/chat-frontend.git
+cd chat-frontend
+git remote add upstream https://github.com/h3n-x/chat-frontend.git
 ```
 
 ---
@@ -41,7 +45,8 @@ git remote add upstream https://github.com/h3n-x/chat-anonimo.git
 
 ### 🐍 **Backend Setup**
 ```bash
-cd backend
+git clone https://github.com/h3n-x/chat-backend.git
+cd chat-backend
 
 # Crear entorno virtual
 python -m venv venv
@@ -59,7 +64,8 @@ python -m pytest tests/
 
 ### 🎨 **Frontend Setup**
 ```bash
-cd frontend
+git clone https://github.com/h3n-x/chat-frontend.git
+cd chat-frontend
 
 # Instalar dependencias
 npm install

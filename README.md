@@ -63,9 +63,9 @@
 
 ```mermaid
 graph TB
-    A[👤 Usuario] --> B[🌐 Frontend Next.js]
+    A[👤 Usuario] --> B[🌐 Next.js Frontend]
     B --> C[⚡ WebSocket Seguro]
-    C --> D[🚀 Backend FastAPI]
+    C --> D[🚀 FastAPI Backend]
     D --> E[🔐 Motor de Cifrado]
     D --> F[📁 Almacenamiento Temporal]
     E --> G[🔑 Gestión de Claves]
@@ -77,6 +77,23 @@ graph TB
     style E fill:#fff3e0
     style F fill:#fce4ec
 ```
+
+### 📦 **Arquitectura de Repositorios**
+
+Este proyecto está dividido en **dos repositorios independientes** para mejor organización y despliegue:
+
+| Repositorio | Descripción | Tecnología | Deploy |
+|-------------|-------------|------------|--------|
+| 🚀 **[chat-backend](https://github.com/h3n-x/chat-backend)** | API y servidor WebSocket | FastAPI + Python | [Render](https://chat-backend-haeb.onrender.com) |
+| 🎨 **[chat-frontend](https://github.com/h3n-x/chat-frontend)** | Interfaz de usuario | Next.js + TypeScript | [Netlify](https://write-ghost.netlify.app) |
+
+### 🔗 **Comunicación entre Repositorios**
+- **WebSocket**: Comunicación en tiempo real
+- **HTTPS/WSS**: Protocolo seguro en producción
+- **CORS**: Configurado para permitir origen frontend
+- **API REST**: Endpoints para subida de archivos
+
+---
 
 ### 🔧 **Stack Tecnológico**
 
@@ -100,17 +117,17 @@ graph TB
 ### ⚡ **Instalación Rápida**
 
 ```bash
-# Clonar el repositorio
-git clone https://github.com/h3n-x/chat-anonimo.git
-cd chat-anonimo
+# Clonar repositorios
+git clone https://github.com/h3n-x/chat-backend.git
+git clone https://github.com/h3n-x/chat-frontend.git
 
 # Configurar Backend
-cd backend
+cd chat-backend
 pip install -r requirements.txt
 python main.py
 
 # Configurar Frontend (nueva terminal)
-cd ../frontend
+cd ../chat-frontend
 npm install
 npm run dev
 ```
@@ -270,18 +287,20 @@ npm run test
 
 ### 📝 **Estructura del Proyecto**
 ```
-chat-anonimo/
-├── 📁 backend/
+Chat Anónimo (Monorepo Conceptual)
+├── � Backend (chat-backend)
+│   ├── Repository: https://github.com/h3n-x/chat-backend.git
 │   ├── 🐍 main.py          # Servidor FastAPI principal
 │   ├── 🔐 crypto_utils.py  # Motor de cifrado
 │   ├── ⚙️ config.py        # Configuración
 │   └── 🧪 tests/           # Tests unitarios
-├── 📁 frontend/
+├── 🎨 Frontend (chat-frontend)
+│   ├── Repository: https://github.com/h3n-x/chat-frontend.git
 │   ├── 🎨 app/             # Páginas Next.js
 │   ├── 🧩 components/      # Componentes React
 │   ├── 🔧 lib/             # Utilidades y API
 │   └── 🎯 public/          # Recursos estáticos
-└── 📖 README.md            # Este archivo
+└── 📖 README.md            # Este archivo (documentación principal)
 ```
 
 ---
@@ -289,8 +308,8 @@ chat-anonimo/
 ## 📚 Documentación Adicional
 
 - 📖 **[README en Inglés](README.en.md)** - English version of this document
-- 🚀 **[Backend Documentation](backend/README.md)** - API y configuración del servidor
-- 🎨 **[Frontend Documentation](frontend/README.md)** - Componentes y desarrollo
+- 🚀 **[Backend Repository](https://github.com/h3n-x/chat-backend)** - API y configuración del servidor
+- 🎨 **[Frontend Repository](https://github.com/h3n-x/chat-frontend)** - Interfaz de usuario y componentes
 - 🤝 **[Guía de Contribución](CONTRIBUTING.md)** - Cómo contribuir al proyecto
 - 📜 **[Licencia](LICENSE)** - Términos y condiciones MIT
 
@@ -332,15 +351,21 @@ Este proyecto está bajo la Licencia MIT. Ver [LICENSE](LICENSE) para más detal
 ## 🤝 Soporte y Contacto
 
 ### 💬 **Comunidad**
-- **Issues**: [GitHub Issues](https://github.com/h3n-x/chat-anonimo/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/h3n-x/chat-anonimo/discussions)
+- **Issues**: 
+  - [Backend Issues](https://github.com/h3n-x/chat-backend/issues)
+  - [Frontend Issues](https://github.com/h3n-x/chat-frontend/issues)
+- **Discussions**: 
+  - [Backend Discussions](https://github.com/h3n-x/chat-backend/discussions)
+  - [Frontend Discussions](https://github.com/h3n-x/chat-frontend/discussions)
 
 ### 🔧 **Contribuir**
-1. Fork el proyecto
+1. Elige el repositorio apropiado:
+   - **Backend**: Fork [chat-backend](https://github.com/h3n-x/chat-backend)
+   - **Frontend**: Fork [chat-frontend](https://github.com/h3n-x/chat-frontend)
 2. Crea una rama para tu feature (`git checkout -b feature/AmazingFeature`)
 3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
 4. Push a la rama (`git push origin feature/AmazingFeature`)
-5. Abre un Pull Request
+5. Abre un Pull Request en el repositorio correspondiente
 
 ### 🏆 **Reconocimientos**
 - **Cryptography**: Biblioteca de cifrado de Python

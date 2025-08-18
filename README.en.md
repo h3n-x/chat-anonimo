@@ -80,6 +80,23 @@ graph TB
     style F fill:#fce4ec
 ```
 
+### 📦 **Repository Architecture**
+
+This project is divided into **two independent repositories** for better organization and deployment:
+
+| Repository | Description | Technology | Deploy |
+|------------|-------------|------------|--------|
+| 🚀 **[chat-backend](https://github.com/h3n-x/chat-backend)** | API and WebSocket server | FastAPI + Python | [Render](https://chat-backend-haeb.onrender.com) |
+| 🎨 **[chat-frontend](https://github.com/h3n-x/chat-frontend)** | User interface | Next.js + TypeScript | [Netlify](https://write-ghost.netlify.app) |
+
+### 🔗 **Communication between Repositories**
+- **WebSocket**: Real-time communication
+- **HTTPS/WSS**: Secure protocol in production
+- **CORS**: Configured to allow frontend origin
+- **REST API**: Endpoints for file upload
+
+---
+
 ### 🔧 **Technology Stack**
 
 | Component | Technology | Purpose |
@@ -102,17 +119,17 @@ graph TB
 ### ⚡ **Quick Installation**
 
 ```bash
-# Clone the repository
-git clone https://github.com/h3n-x/chat-anonimo.git
-cd chat-anonimo
+# Clone repositories
+git clone https://github.com/h3n-x/chat-backend.git
+git clone https://github.com/h3n-x/chat-frontend.git
 
 # Setup Backend
-cd backend
+cd chat-backend
 pip install -r requirements.txt
 python main.py
 
 # Setup Frontend (new terminal)
-cd ../frontend
+cd ../chat-frontend
 npm install
 npm run dev
 ```
@@ -272,18 +289,20 @@ npm run test
 
 ### 📝 **Project Structure**
 ```
-chat-anonimo/
-├── 📁 backend/
+Anonymous Chat (Conceptual Monorepo)
+├── � Backend (chat-backend)
+│   ├── Repository: https://github.com/h3n-x/chat-backend.git
 │   ├── 🐍 main.py          # Main FastAPI server
 │   ├── 🔐 crypto_utils.py  # Encryption engine
 │   ├── ⚙️ config.py        # Configuration
 │   └── 🧪 tests/           # Unit tests
-├── 📁 frontend/
+├── 🎨 Frontend (chat-frontend)
+│   ├── Repository: https://github.com/h3n-x/chat-frontend.git
 │   ├── 🎨 app/             # Next.js pages
 │   ├── 🧩 components/      # React components
 │   ├── 🔧 lib/             # Utilities and API
 │   └── 🎯 public/          # Static resources
-└── 📖 README.md            # This file
+└── 📖 README.md            # This file (main documentation)
 ```
 
 ---
@@ -291,8 +310,8 @@ chat-anonimo/
 ## 📚 Additional Documentation
 
 - 📖 **[README en Español](README.md)** - Spanish version of this document
-- 🚀 **[Backend Documentation](backend/README.md)** - API and server configuration
-- 🎨 **[Frontend Documentation](frontend/README.md)** - Components and development
+- 🚀 **[Backend Repository](https://github.com/h3n-x/chat-backend)** - API and server configuration
+- 🎨 **[Frontend Repository](https://github.com/h3n-x/chat-frontend)** - User interface and components
 - 🤝 **[Contributing Guide](CONTRIBUTING.md)** - How to contribute to the project
 - 📜 **[License](LICENSE)** - MIT terms and conditions
 
@@ -334,15 +353,21 @@ This project is under the MIT License. See [LICENSE](LICENSE) for more details.
 ## 🤝 Support and Contact
 
 ### 💬 **Community**
-- **Issues**: [GitHub Issues](https://github.com/h3n-x/chat-anonimo/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/h3n-x/chat-anonimo/discussions)
+- **Issues**: 
+  - [Backend Issues](https://github.com/h3n-x/chat-backend/issues)
+  - [Frontend Issues](https://github.com/h3n-x/chat-frontend/issues)
+- **Discussions**: 
+  - [Backend Discussions](https://github.com/h3n-x/chat-backend/discussions)
+  - [Frontend Discussions](https://github.com/h3n-x/chat-frontend/discussions)
 
 ### 🔧 **Contributing**
-1. Fork the project
+1. Choose the appropriate repository:
+   - **Backend**: Fork [chat-backend](https://github.com/h3n-x/chat-backend)
+   - **Frontend**: Fork [chat-frontend](https://github.com/h3n-x/chat-frontend)
 2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
 3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
 4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+5. Open a Pull Request in the corresponding repository
 
 ### 🏆 **Acknowledgments**
 - **Cryptography**: Python encryption library
