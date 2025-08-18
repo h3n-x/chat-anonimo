@@ -18,6 +18,18 @@
 
 ---
 
+## 📸 Preview
+
+<div align="center">
+
+<img src="https://github.com/user-attachments/assets/05ed4a02-1731-4b69-b8ac-ce2d8d35d7c3" alt="Anonymous Chat Application Preview" width="800">
+
+*Modern and secure interface for anonymous communication with end-to-end encryption*
+
+</div>
+
+---
+
 ## 📋 Quick Navigation
 
 <details>
