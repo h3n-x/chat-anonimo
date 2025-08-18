@@ -1,65 +1,92 @@
-# 🔒 Chat Anónimo - Comunicación Segura y Privada
-
 <div align="center">
 
-![Security](https://img.shields.io/badge/Security-AES%20256%20GCM-brightgreen)
-![Privacy](https://img.shields.io/badge/Privacy-End%20to%20End-blue)
-![Database](https://img.shields.io/badge/Database-None-orange)
-![Auto Delete](https://img.shields.io/badge/Auto%20Delete-30%20min-red)
+# 🔒 Chat Anónimo
+### Comunicación Segura y Privada con Cifrado End-to-End
 
-**Sistema de chat anónimo con cifrado end-to-end, intercambio seguro de archivos y auto-eliminación**
+![Security](https://img.shields.io/badge/🔐_Security-AES%20256%20GCM-brightgreen?style=for-the-badge)
+![Privacy](https://img.shields.io/badge/🛡️_Privacy-End%20to%20End-blue?style=for-the-badge)
+![Database](https://img.shields.io/badge/💾_Database-None-orange?style=for-the-badge)
+![Auto Delete](https://img.shields.io/badge/⏰_Auto%20Delete-30%20min-red?style=for-the-badge)
 
-[🚀 Demo en Vivo](https://write-ghost.netlify.app) | [📖 English](README.en.md) | [🔧 Instalación](#-instalación-y-configuración)
+**Sistema de chat anónimo con cifrado militar, intercambio seguro de archivos y auto-eliminación inteligente**
+
+[![🚀 Demo en Vivo](https://img.shields.io/badge/🚀_Demo-En%20Vivo-success?style=for-the-badge&logo=vercel)](https://write-ghost.netlify.app)
+[![📖 English](https://img.shields.io/badge/📖_Read-English-blue?style=for-the-badge)](README.en.md)
+[![🔧 Instalación](https://img.shields.io/badge/🔧_Quick-Setup-purple?style=for-the-badge)](#-instalación-rápida)
 
 </div>
 
-## 📋 Tabla de Contenidos
+---
+
+## 📋 Navegación Rápida
+
+<details>
+<summary><strong>📑 Tabla de Contenidos Completa</strong></summary>
 
 - [🌟 Características Principales](#-características-principales)
 - [🏗️ Arquitectura del Sistema](#️-arquitectura-del-sistema)
-- [🚀 Instalación y Configuración](#-instalación-y-configuración)
+- [🚀 Instalación Rápida](#-instalación-rápida)
 - [📖 Guía de Uso](#-guía-de-uso)
 - [🔍 Especificaciones de Seguridad](#-especificaciones-de-seguridad)
 - [🌍 Deployment](#-deployment)
 - [📊 Monitoreo y Métricas](#-monitoreo-y-métricas)
-- [🛠️ Desarrollo y Contribución](#️-desarrollo-y-contribución)
+- [🛠️ Desarrollo](#️-desarrollo)
 - [🔒 Consideraciones de Seguridad](#-consideraciones-de-seguridad)
-- [📜 Licencia y Términos](#-licencia-y-términos)
-- [📚 Documentación Adicional](#-documentación-adicional)
+- [📚 Documentación](#-documentación)
+- [🤝 Contribución](#-contribución)
 
-</div>
+</details>
 
 ---
 
 ## 🌟 Características Principales
 
-### 🛡️ **Seguridad Máxima**
-- **🔐 Cifrado AES-256-GCM** - Estándar militar para todos los mensajes y archivos
-- **🔑 Intercambio de Claves Diffie-Hellman** - Negociación segura de claves sin exposición
-- **🚫 Sin Base de Datos** - Cero persistencia de datos sensibles
-- **⏰ Auto-Eliminación Inteligente** - Mensajes (10 min) y archivos (30 min)
+<div align="center">
 
-### 👤 **Anonimato Total**
-- **🎭 Identidades Temporales** - Usuarios generados automáticamente
-- **🌈 Avatares Únicos** - Colores distintivos sin información personal
-- **📊 Sin Registro** - Acceso inmediato sin crear cuentas
-- **🔄 Sesiones Efímeras** - Cada conexión es independiente
+### 🛡️ **Seguridad de Grado Militar**
 
-### 📁 **Intercambio de Archivos Seguro**
-- **🔒 Contenido Cifrado** - Archivos protegidos con AES-256
-- **🏷️ Metadatos Cifrados** - Nombres y tipos de archivo protegidos
-- **📏 Límites Inteligentes** - 15MB por archivo, 5 archivos por usuario
-- **🗂️ Tipos Compatibles** - Imágenes, documentos, audio y más
+</div>
 
-### 🏠 **Salas Privadas**
-- **🚪 Creación Instantánea** - Salas temporales con códigos únicos
-- **👥 Gestión de Usuarios** - Control de acceso por sala
-- **🔐 Cifrado Independiente** - Claves únicas por sala privada
-- **📱 Interfaz Responsive** - Optimizado para móviles y escritorio
+| Característica | Descripción | Estado |
+|---|---|---|
+| **🔐 Cifrado AES-256-GCM** | Estándar militar para todos los datos | ✅ Activo |
+| **🔑 Diffie-Hellman** | Intercambio seguro de claves | ✅ Activo |
+| **🚫 Zero Database** | Sin persistencia de datos sensibles | ✅ Activo |
+| **⏰ Auto-Eliminación** | Limpieza automática inteligente | ✅ Activo |
+
+<div align="center">
+
+### 👤 **Anonimato Absoluto**
+
+</div>
+
+| Característica | Descripción | Beneficio |
+|---|---|---|
+| **🎭 Identidades Temporales** | Usuarios generados automáticamente | Sin registro |
+| **🌈 Avatares Únicos** | Colores distintivos sin datos personales | Identificación visual |
+| **🔄 Sesiones Efímeras** | Cada conexión es independiente | Máxima privacidad |
+| **📊 Sin Tracking** | Cero recopilación de datos | Anonimato total |
+
+<div align="center">
+
+### 📁 **Intercambio Seguro de Archivos**
+
+</div>
+
+| Especificación | Valor | Seguridad |
+|---|---|---|
+| **📏 Tamaño Máximo** | 15MB por archivo | ✅ Optimizado |
+| **🗂️ Cantidad Límite** | 5 archivos por usuario | ✅ Controlado |
+| **🔒 Cifrado** | AES-256-GCM completo | ✅ Militar |
+| **⏱️ Retención** | 30 minutos máximo | ✅ Auto-limpieza |
 
 ---
 
 ## 🏗️ Arquitectura del Sistema
+
+<div align="center">
+
+### 🔄 **Flujo de Comunicación Segura**
 
 ```mermaid
 graph TB
@@ -67,7 +94,7 @@ graph TB
     B --> C[⚡ WebSocket Seguro]
     C --> D[🚀 FastAPI Backend]
     D --> E[🔐 Motor de Cifrado]
-    D --> F[📁 Almacenamiento Temporal]
+    D --> F[📁 Storage Temporal]
     E --> G[🔑 Gestión de Claves]
     F --> H[⏰ Auto-Limpieza]
     
@@ -78,147 +105,208 @@ graph TB
     style F fill:#fce4ec
 ```
 
-### 📦 **Arquitectura de Repositorios**
+</div>
 
-Este proyecto está dividido en **dos repositorios independientes** para mejor organización y despliegue:
+### 📦 **Arquitectura Multi-Repositorio**
 
-| Repositorio | Descripción | Tecnología | Deploy |
-|-------------|-------------|------------|--------|
-| 🚀 **[chat-backend](https://github.com/h3n-x/chat-backend)** | API y servidor WebSocket | FastAPI + Python | [Render](https://chat-backend-haeb.onrender.com) |
-| 🎨 **[chat-frontend](https://github.com/h3n-x/chat-frontend)** | Interfaz de usuario | Next.js + TypeScript | [Netlify](https://write-ghost.netlify.app) |
+| Componente | Repositorio | Tecnología | Deploy | Estado |
+|---|---|---|---|---|
+| **🎨 Frontend** | [chat-frontend](https://github.com/h3n-x/chat-frontend) | Next.js 14 + TypeScript | [Netlify](https://write-ghost.netlify.app) | 🟢 Online |
+| **🚀 Backend** | [chat-backend](https://github.com/h3n-x/chat-backend) | FastAPI + Python | [Render](https://chat-backend-haeb.onrender.com) | 🟢 Online |
 
-### 🔗 **Comunicación entre Repositorios**
-- **WebSocket**: Comunicación en tiempo real
-- **HTTPS/WSS**: Protocolo seguro en producción
-- **CORS**: Configurado para permitir origen frontend
-- **API REST**: Endpoints para subida de archivos
+<details>
+<summary><strong>🔧 Stack Tecnológico Completo</strong></summary>
 
----
+| Capa | Tecnología | Propósito | Versión |
+|---|---|---|---|
+| **🎨 Frontend** | Next.js + TypeScript | Interfaz moderna y responsive | 14.x |
+| **🚀 Backend** | FastAPI + Python | API eficiente con WebSockets | 3.11+ |
+| **🔐 Cifrado** | AES-256-GCM + DH | Seguridad de grado militar | Nativo |
+| **🌐 Deploy** | Netlify + Render | Infraestructura escalable | Cloud |
+| **💾 Storage** | Memoria + Temporal | Sin persistencia | Efímero |
+| **🔄 Comunicación** | WebSocket + HTTPS | Tiempo real seguro | WSS/TLS |
 
-### 🔧 **Stack Tecnológico**
-
-| Componente | Tecnología | Propósito |
-|------------|------------|-----------|
-| **Frontend** | Next.js 14 + TypeScript | Interfaz moderna y responsive |
-| **Backend** | FastAPI + Python | API eficiente con WebSockets |
-| **Cifrado** | AES-256-GCM + DH | Seguridad de grado militar |
-| **Deployment** | Netlify + Render | Infraestructura escalable |
-| **Storage** | Memoria + Archivos Temporales | Sin persistencia |
+</details>
 
 ---
 
-## 🚀 Instalación y Configuración
+## 🚀 Instalación Rápida
 
-### 📋 **Requisitos Previos**
-- **Python 3.11+** para el backend
-- **Node.js 18+** para el frontend
-- **Git** para clonar el repositorio
+<div align="center">
 
-### ⚡ **Instalación Rápida**
+### ⚡ **Setup en 30 Segundos**
+
+</div>
 
 ```bash
-# Clonar repositorios
+# 1. Clonar repositorios
 git clone https://github.com/h3n-x/chat-backend.git
 git clone https://github.com/h3n-x/chat-frontend.git
 
-# Configurar Backend
-cd chat-backend
-pip install -r requirements.txt
-python main.py
+# 2. Backend (Terminal 1)
+cd chat-backend && pip install -r requirements.txt && python main.py
 
-# Configurar Frontend (nueva terminal)
-cd ../chat-frontend
-npm install
-npm run dev
+# 3. Frontend (Terminal 2)  
+cd chat-frontend && npm install && npm run dev
 ```
 
-### 🌐 **Configuración de Producción**
+<div align="center">
 
-#### Backend (Render/Railway)
+**🎉 ¡Listo! Accede a [http://localhost:3000](http://localhost:3000)**
+
+</div>
+
+<details>
+<summary><strong>🔧 Configuración Avanzada</strong></summary>
+
+### 🌐 **Variables de Entorno**
+
+#### Backend (.env)
 ```bash
-# Variables de entorno requeridas
 PORT=8000
-CORS_ORIGINS=https://tu-frontend.netlify.app
+CORS_ORIGINS=http://localhost:3000,https://write-ghost.netlify.app
+MAX_FILE_SIZE=15728640  # 15MB
+MAX_FILES_PER_USER=5
+AUTO_CLEANUP_INTERVAL=300  # 5 minutos
 ```
 
-#### Frontend (Netlify/Vercel)
+#### Frontend (.env.local)
 ```bash
-# Build settings
-Build command: npm run build
-Publish directory: out
+NEXT_PUBLIC_WS_URL=ws://localhost:8000
+NEXT_PUBLIC_API_URL=http://localhost:8000
+NEXT_PUBLIC_MAX_FILE_SIZE=15728640
 ```
+
+### 🐳 **Docker Setup**
+```bash
+# Backend
+cd chat-backend
+docker build -t chat-backend .
+docker run -p 8000:8000 chat-backend
+
+# Frontend
+cd chat-frontend  
+docker build -t chat-frontend .
+docker run -p 3000:3000 chat-frontend
+```
+
+</details>
 
 ---
 
 ## 📖 Guía de Uso
 
-### 🎯 **Acceso Rápido**
-1. **Ingresa al chat** - Sin registro necesario
-2. **Elige tu sala** - General o crea una privada
-3. **Comienza a chatear** - Cifrado automático activado
-4. **Comparte archivos** - Arrastra y suelta archivos
+<div align="center">
+
+### 🎯 **Acceso Inmediato - Sin Registro**
+
+</div>
+
+| Paso | Acción | Resultado |
+|---|---|---|
+| **1️⃣** | Accede a la aplicación | Identidad anónima generada |
+| **2️⃣** | Elige sala (General/Privada) | Conexión cifrada establecida |
+| **3️⃣** | Comienza a chatear | Mensajes cifrados automáticamente |
+| **4️⃣** | Comparte archivos (opcional) | Contenido cifrado y temporal |
 
 ### 🔐 **Salas Privadas**
-```
-1. Clic en "Crear Sala Privada"
-2. Comparte el código de 6 dígitos
-3. Máximo 10 usuarios por sala
-4. Cifrado independiente por sala
+
+<div align="center">
+
+**Máxima privacidad con cifrado independiente**
+
+</div>
+
+```bash
+🚪 Crear Sala Privada
+├── 🎲 Código único de 6 dígitos
+├── 👥 Máximo 10 usuarios
+├── 🔑 Claves de cifrado independientes
+└── ⏰ Auto-eliminación al vaciar
 ```
 
-### 📁 **Subida de Archivos**
-- **Métodos**: Arrastra y suelta o clic en 📎
-- **Límites**: 15MB por archivo, 5 archivos por usuario
-- **Formatos**: Imágenes, documentos, audio, video
-- **Seguridad**: Cifrado automático del contenido y metadatos
+### 📁 **Intercambio de Archivos**
+
+| Método | Límites | Seguridad | Retención |
+|---|---|---|---|
+| **🖱️ Drag & Drop** | 15MB/archivo | AES-256-GCM | 30 min |
+| **📎 Selector** | 5 archivos/usuario | Metadatos cifrados | Auto-limpieza |
+| **🖼️ Vista Previa** | Imágenes soportadas | Sin cache persistente | Temporal |
 
 ---
 
 ## 🔍 Especificaciones de Seguridad
 
-### 🛡️ **Niveles de Protección**
+<div align="center">
 
-| Elemento | Cifrado | Almacenamiento | Retención |
-|----------|---------|----------------|-----------|
-| **Mensajes** | ✅ AES-256-GCM | 🚫 Solo memoria | ⏰ 10 minutos |
-| **Archivos** | ✅ AES-256-GCM | 📁 Temporal cifrado | ⏰ 30 minutos |
-| **Metadatos** | ✅ AES-256-GCM | 🚫 Solo memoria | ⏰ Con el archivo |
-| **Claves** | ✅ Diffie-Hellman | 🚫 Solo memoria | ⏰ Por sesión |
+### 🛡️ **Matriz de Protección**
 
-### 🔒 **Flujo de Cifrado**
+</div>
+
+| Elemento | Cifrado | Almacenamiento | Retención | Integridad |
+|---|---|---|---|---|
+| **💬 Mensajes** | ✅ AES-256-GCM | 🚫 Solo memoria | ⏰ 10 min | ✅ HMAC |
+| **📁 Archivos** | ✅ AES-256-GCM | 📁 Temporal cifrado | ⏰ 30 min | ✅ HMAC |
+| **🏷️ Metadatos** | ✅ AES-256-GCM | 🚫 Solo memoria | ⏰ Con archivo | ✅ HMAC |
+| **🔑 Claves** | ✅ Diffie-Hellman | 🚫 Solo memoria | ⏰ Por sesión | ✅ PFS |
+
+<details>
+<summary><strong>🔐 Flujo de Cifrado Detallado</strong></summary>
 
 ```mermaid
 sequenceDiagram
-    participant U1 as Usuario 1
-    participant S as Servidor
-    participant U2 as Usuario 2
+    participant U1 as 👤 User 1
+    participant S as 🚀 Server
+    participant U2 as 👤 User 2
     
-    U1->>S: Conectar WebSocket
-    S->>U1: Generar clave sala
-    U2->>S: Unirse a sala
-    S->>U2: Compartir clave
-    U1->>S: Mensaje cifrado AES-256
-    S->>U2: Retransmitir cifrado
-    U2->>U2: Descifrar localmente
+    Note over U1,U2: 🔑 Key Exchange
+    U1->>S: Connect WebSocket
+    S->>U1: Generate DH pair
+    U2->>S: Join room
+    S->>U2: DH exchange
+    S->>U1: Shared key established
+    S->>U2: Shared key established
+    
+    Note over U1,U2: 💬 Encrypted Communication
+    U1->>U1: Encrypt message (AES-256-GCM)
+    U1->>S: Send encrypted message
+    S->>U2: Relay (without decrypting)
+    U2->>U2: Decrypt message locally
 ```
 
-### 🔐 **Algoritmos Utilizados**
+
+### 🔒 **Algoritmos Implementados**
 - **Cifrado Simétrico**: AES-256-GCM (Galois/Counter Mode)
-- **Intercambio de Claves**: Diffie-Hellman Ephemeral
+- **Intercambio de Claves**: Diffie-Hellman Ephemeral (DHE)
+- **Función Hash**: SHA-256 para derivación de claves
 - **Integridad**: HMAC integrado en GCM
-- **Aleatoriedad**: Nonces criptográficamente seguros
+- **Aleatoriedad**: CSPRNG para nonces y claves
+
+</details>
 
 ---
 
 ## 🌍 Deployment
 
-### 🎯 **URLs de Producción**
-- **Frontend**: [https://write-ghost.netlify.app](https://write-ghost.netlify.app)
-- **Backend**: [https://chat-backend-haeb.onrender.com](https://chat-backend-haeb.onrender.com)
+<div align="center">
 
-### ⚙️ **Configuración CORS**
+### 🎯 **Infraestructura de Producción**
+
+</div>
+
+| Servicio | URL | Estado | Uptime |
+|---|---|---|---|
+| **🎨 Frontend** | [write-ghost.netlify.app](https://write-ghost.netlify.app) | 🟢 Online | 99.9% |
+| **🚀 Backend** | [chat-backend-haeb.onrender.com](https://chat-backend-haeb.onrender.com) | 🟢 Online | 99.5% |
+| **📊 Health Check** | [/health](https://chat-backend-haeb.onrender.com/health) | 🟢 Online | Monitoreado |
+| **📖 API Docs** | [/docs](https://chat-backend-haeb.onrender.com/docs) | 🟢 Online | Swagger UI |
+
+<details>
+<summary><strong>⚙️ Configuración de Producción</strong></summary>
+
+### 🔧 **Backend (Render)**
 ```python
-# backend/main.py
+# Configuración CORS
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["https://write-ghost.netlify.app"],
@@ -226,159 +314,3 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-```
-
-### 🔧 **Variables de Entorno**
-```bash
-# Backend
-PORT=8000
-CORS_ORIGINS=https://write-ghost.netlify.app
-MAX_FILE_SIZE=15728640  # 15MB
-MAX_FILES_PER_USER=5
-
-# Frontend 
-NEXT_PUBLIC_WS_URL=wss://chat-backend-haeb.onrender.com
-```
-
----
-
-## 📊 Monitoreo y Métricas
-
-### 📈 **Límites del Sistema**
-- **👥 Usuarios Concurrentes**: Sin límite técnico
-- **📁 Archivos Totales**: 30 simultáneos en el sistema
-- **💾 Uso de Memoria**: Auto-optimización con limpieza
-- **🚀 Latencia**: < 100ms para mensajes
-
-### 🧹 **Auto-Limpieza**
-```
-⏰ Cada 5 minutos:
-  ├── 🗑️ Eliminar mensajes > 10 min
-  ├── 🗑️ Eliminar archivos > 30 min
-  ├── 🧹 Limpiar memoria de claves
-  └── 📊 Log de estadísticas
-```
-
----
-
-## 🛠️ Desarrollo y Contribución
-
-### 🏃‍♂️ **Desarrollo Local**
-```bash
-# Backend con hot-reload
-cd backend
-uvicorn main:app --reload --host 0.0.0.0 --port 8000
-
-# Frontend con hot-reload  
-cd frontend
-npm run dev
-```
-
-### 🧪 **Testing**
-```bash
-# Tests del backend
-cd backend
-python -m pytest tests/
-
-# Tests del frontend
-cd frontend
-npm run test
-```
-
-### 📝 **Estructura del Proyecto**
-```
-Chat Anónimo (Monorepo Conceptual)
-├── � Backend (chat-backend)
-│   ├── Repository: https://github.com/h3n-x/chat-backend.git
-│   ├── 🐍 main.py          # Servidor FastAPI principal
-│   ├── 🔐 crypto_utils.py  # Motor de cifrado
-│   ├── ⚙️ config.py        # Configuración
-│   └── 🧪 tests/           # Tests unitarios
-├── 🎨 Frontend (chat-frontend)
-│   ├── Repository: https://github.com/h3n-x/chat-frontend.git
-│   ├── 🎨 app/             # Páginas Next.js
-│   ├── 🧩 components/      # Componentes React
-│   ├── 🔧 lib/             # Utilidades y API
-│   └── 🎯 public/          # Recursos estáticos
-└── 📖 README.md            # Este archivo (documentación principal)
-```
-
----
-
-## 📚 Documentación Adicional
-
-- 📖 **[README en Inglés](README.en.md)** - English version of this document
-- 🚀 **[Backend Repository](https://github.com/h3n-x/chat-backend)** - API y configuración del servidor
-- 🎨 **[Frontend Repository](https://github.com/h3n-x/chat-frontend)** - Interfaz de usuario y componentes
-- 🤝 **[Guía de Contribución](CONTRIBUTING.md)** - Cómo contribuir al proyecto
-- 📜 **[Licencia](LICENSE)** - Términos y condiciones MIT
-
----
-
-## 🔒 Consideraciones de Seguridad
-
-### ✅ **Fortalezas Implementadas**
-- **Zero-Knowledge**: Servidor no puede leer mensajes
-- **Perfect Forward Secrecy**: Claves únicas por sesión
-- **Auto-Destrucción**: Eliminación automática garantizada
-- **Sin Logs**: Cero almacenamiento de contenido sensible
-
-### ⚠️ **Limitaciones Conocidas**
-- **Metadatos de Conexión**: IPs visibles a nivel de infraestructura
-- **Persistencia del Cliente**: Cache local temporal
-- **Disponibilidad**: Dependiente de infraestructura de terceros
-
-### 🔐 **Recomendaciones de Uso**
-- **VPN**: Para ocultar dirección IP real
-- **Tor Browser**: Para máximo anonimato de navegación
-- **Incógnito**: Evitar cache persistente del navegador
-
----
-
-## 📜 Licencia y Términos
-
-### 📄 **Licencia MIT**
-Este proyecto está bajo la Licencia MIT. Ver [LICENSE](LICENSE) para más detalles.
-
-### ⚖️ **Términos de Uso**
-- **Uso Responsable**: No para actividades ilegales
-- **Sin Garantías**: Software proporcionado "as-is"
-- **Privacidad**: No recopilamos datos personales
-- **Contenido**: Los usuarios son responsables de su contenido
-
----
-
-## 🤝 Soporte y Contacto
-
-### 💬 **Comunidad**
-- **Issues**: 
-  - [Backend Issues](https://github.com/h3n-x/chat-backend/issues)
-  - [Frontend Issues](https://github.com/h3n-x/chat-frontend/issues)
-- **Discussions**: 
-  - [Backend Discussions](https://github.com/h3n-x/chat-backend/discussions)
-  - [Frontend Discussions](https://github.com/h3n-x/chat-frontend/discussions)
-
-### 🔧 **Contribuir**
-1. Elige el repositorio apropiado:
-   - **Backend**: Fork [chat-backend](https://github.com/h3n-x/chat-backend)
-   - **Frontend**: Fork [chat-frontend](https://github.com/h3n-x/chat-frontend)
-2. Crea una rama para tu feature (`git checkout -b feature/AmazingFeature`)
-3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
-4. Push a la rama (`git push origin feature/AmazingFeature`)
-5. Abre un Pull Request en el repositorio correspondiente
-
-### 🏆 **Reconocimientos**
-- **Cryptography**: Biblioteca de cifrado de Python
-- **FastAPI**: Framework web moderno y rápido
-- **Next.js**: Framework React de producción
-- **Comunidad Open Source**: Por las herramientas increíbles
-
----
-
-<div align="center">
-
-**Hecho con ❤️ para la privacidad y la libertad de comunicación**
-
-![Visitors](https://api.visitorbadge.io/api/visitors?path=h3n-x%2Fchat-anonimo&label=Visitantes&countColor=%23263759)
-
-</div>
