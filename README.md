@@ -18,6 +18,16 @@
 
 ---
 
+## 📸 Vista Previa
+
+<div align="center">
+
+<img src="https://github.com/user-attachments/assets/05ed4a02-1731-4b69-b8ac-ce2d8d35d7c3" alt="Chat Anónimo - Vista Previa de la Aplicación" width="800" style="border-radius: 10px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+
+<p><em>Interfaz moderna del chat anónimo con cifrado end-to-end</em></p>
+
+---
+
 ## 📋 Navegación Rápida
 
 <details>
