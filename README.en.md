@@ -1,5 +1,9 @@
 <div align="center">
 
+<img src="assets/brand/06-social/og-image.svg" alt="Anonymous Chat v2.5 Banner" width="100%" />
+
+<br/><br/>
+
 # 🔒 Anonymous Chat v2.5 — Privacy & Anti-Surveillance Suite
 ### Military-Grade Ephemeral Messaging with Native Zero-Knowledge Blind Relay & In-RAM Sovereign Cryptography
 

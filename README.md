@@ -1,5 +1,9 @@
 <div align="center">
 
+<img src="assets/brand/06-social/og-image.svg" alt="Chat Anónimo v2.5 Banner" width="100%" />
+
+<br/><br/>
+
 # 🔒 Chat Anónimo v2.5 — Privacy & Anti-Surveillance Suite
 ### Mensajería Efímera Militar de Cero Conocimiento (*Zero-Knowledge Blind Relay*) con Criptografía Soberana en Memoria RAM
 
