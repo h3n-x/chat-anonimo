@@ -1,327 +1,171 @@
 <div align="center">
 
-# 🔒 Anonymous Chat
-### Secure and Private Communication with End-to-End Encryption
+# 🔒 Chat Anónimo v2.0
+### Ephemeral Messaging with Real End-to-End Encryption and Zero-Knowledge Blind Relay
 
-![Security](https://img.shields.io/badge/🔐_Security-AES%20256%20GCM-brightgreen?style=for-the-badge)
-![Privacy](https://img.shields.io/badge/🛡️_Privacy-End%20to%20End-blue?style=for-the-badge)
-![Database](https://img.shields.io/badge/💾_Database-None-orange?style=for-the-badge)
-![Auto Delete](https://img.shields.io/badge/⏰_Auto%20Delete-30%20min-red?style=for-the-badge)
+![Security](https://img.shields.io/badge/Security-AES--256--GCM_%2B_ECDH-brightgreen?style=for-the-badge)
+![Zero Knowledge](https://img.shields.io/badge/Architecture-Zero--Knowledge_Relay-blue?style=for-the-badge)
+![Zero Persistence](https://img.shields.io/badge/Storage-Zero--Persistence_RAM-orange?style=for-the-badge)
+![Tests](https://img.shields.io/badge/Test_Suite-93%25_Coverage-10B981?style=for-the-badge)
 
-**Anonymous chat system with military-grade encryption, secure file sharing and intelligent auto-deletion**
+**Open-source ephemeral communication platform engineered on the principle of Zero Trust in the Server (*Zero-Knowledge Blind Relay*).**
 
-[![🚀 Live Demo](https://img.shields.io/badge/🚀_Demo-Live-success?style=for-the-badge&logo=vercel)](https://write-ghost.netlify.app)
-[![📖 Español](https://img.shields.io/badge/📖_Leer-Español-blue?style=for-the-badge)](README.md)
-[![🔧 Installation](https://img.shields.io/badge/🔧_Quick-Setup-purple?style=for-the-badge)](#-quick-installation)
-
-</div>
-
----
-
-## 📸 Preview
-
-<div align="center">
-
-<img src="https://github.com/user-attachments/assets/05ed4a02-1731-4b69-b8ac-ce2d8d35d7c3" alt="Anonymous Chat Application Preview" width="800">
-
-*Modern and secure interface for anonymous communication with end-to-end encryption*
+[![🚀 Live Demo](https://img.shields.io/badge/🚀_Demo-Netlify-success?style=for-the-badge&logo=netlify)](https://write-ghost.netlify.app)
+[![📖 Versión en Español](https://img.shields.io/badge/📖_Leer-Español-green?style=for-the-badge)](README.md)
+[![Backend Repository](https://img.shields.io/badge/Backend-chat--backend-teal?style=for-the-badge&logo=fastapi)](https://github.com/h3n-x/chat-backend)
+[![Frontend Repository](https://img.shields.io/badge/Frontend-chat--frontend-cyan?style=for-the-badge&logo=react)](https://github.com/h3n-x/chat-frontend)
 
 </div>
 
 ---
 
-## 📋 Quick Navigation
-
-<details>
-<summary><strong>📑 Complete Table of Contents</strong></summary>
-
-- [🌟 Main Features](#-main-features)
-- [🏗️ System Architecture](#️-system-architecture)
-- [🚀 Quick Installation](#-quick-installation)
-- [📖 Usage Guide](#-usage-guide)
-- [🔍 Security Specifications](#-security-specifications)
-- [🌍 Deployment](#-deployment)
-- [📊 Monitoring and Metrics](#-monitoring-and-metrics)
-- [🛠️ Development](#️-development)
-- [🔒 Security Considerations](#-security-considerations)
-- [📚 Documentation](#-documentation)
-- [🤝 Contributing](#-contributing)
-
-</details>
+## 📋 Table of Contents
+- [🎯 Why v2.0? (Architectural Evolution)](#-why-v20-architectural-evolution)
+- [🛡️ Threat Model & Security Boundaries](#️-threat-model--security-boundaries)
+- [🔑 E2EE Cryptographic Protocol](#-e2ee-cryptographic-protocol)
+- [📁 Zero-Knowledge File Transfer](#-zero-knowledge-file-transfer)
+- [🏗️ Ecosystem Breakdown](#️-ecosystem-breakdown)
+- [🧪 Verification & Automated Testing](#-verification--automated-testing)
+- [🚀 Local Deployment & Execution](#-local-deployment--execution)
+- [📜 License](#-license)
 
 ---
 
-## 🌟 Main Features
+## 🎯 Why v2.0? (Architectural Evolution)
 
-<div align="center">
+The legacy v1.0 version (abandoned in mid-2025) contained critical conceptual flaws:
+- The backend server generated symmetric keys and decrypted messages in transit to manage rooms.
+- The frontend contained insecure fallbacks silently degrading to weak XOR with `Math.random()`.
+- The frontend scaffold suffered from over 600 TypeScript errors and dead v0 scaffolding components.
 
-### 🛡️ **Military-Grade Security**
+**Chat Anónimo v2.0 is a complete architectural rewrite:**
+1. **True Blind Relay:** The server never generates, deduces, or stores keys, and is mathematically incapable of decrypting content.
+2. **Strict Native WebCrypto:** Zero XOR fallbacks. If the browser or network lacks `window.crypto.subtle` (e.g. non-secure HTTP), the application safely halts (*Fail-Closed*).
+3. **Zero-Knowledge URL Hash Invitations:** Room keys travel in the URL hash fragment (`#room=...&key=...`), which per RFC 3986 standard is never transmitted across the network or sent to the server.
 
-</div>
+---
 
-| Feature | Description | Status |
+## 🛡️ Threat Model & Security Boundaries
+
+### Security Goals
+- **End-to-End Confidentiality (E2EE):** No intermediary (ISP, hosting providers, or an attacker with root server access) can inspect messages or files.
+- **Integrity and Authenticity (AEAD):** Message tampering or cross-room replay attacks are detected immediately using AES-256-GCM 128-bit authentication tags and AAD (`room:ID`).
+- **Real Zero-Persistence:** No databases or persistent storage. Rooms and messages reside strictly in RAM while participants are connected and vanish upon exit.
+- **Metadata Privacy:** Original filenames, MIME types, and nicknames travel encrypted inside the AEAD payload.
+
+### Explicit Security Limitations (What this system DOES NOT protect against)
+
+> [!CAUTION]
+> When evaluating Chat Anónimo for high-risk communications, it is critical to understand the threat boundaries that fall **outside its security model**:
+>
+> 1. **Compromised Endpoints (Host Security):**
+>    - If the user's operating system or browser runs malware, trojans, keyloggers, or malicious browser extensions with DOM/memory access, confidentiality is lost at the source. No cryptographic protocol can protect against a compromised endpoint.
+> 2. **Omission of Out-of-Band SAS Verification:**
+>    - Protection against active Man-in-the-Middle (MITM) attacks depends **strictly on users comparing the 4-word code via a secondary, out-of-band channel** (e.g. voice call or in person). If users click *"Match"* without actually comparing words, an active in-path adversary replacing ephemeral public keys can decrypt and re-encrypt the conversation undetected.
+> 3. **Initial Link or Room Code Distribution Channel:**
+>    - Under Method A (direct URL hash fragment `#room=...&key=...`), the key fragment is never sent over HTTP per RFC 3986. However, security depends entirely on sharing the link over an already trusted and encrypted medium. Transmitting the link over SMS, unencrypted email, or monitored commercial platforms exposes the room key.
+> 4. **Network Metadata and Traffic Analysis:**
+>    - Chat Anónimo is **not an anonymous routing network (like Tor or I2P)**. ISPs, hosting providers, and network observers can see users' public IP addresses, exact connection timestamps, and traffic patterns (packet volume and transmission timing).
+> 5. **Browser Memory Persistence:**
+>    - While the application does not persist keys in `localStorage`, `sessionStorage`, or cookies, cryptographic material remains in JavaScript thread memory while the tab is open. Users must explicitly click *"Leave"* to clear keys from RAM.
+> 6. **Denial of Service (DoS):**
+>    - An attacker flooding the backend relay can disrupt service availability, even though they cannot access plaintext or keys.
+
+---
+
+## 🔑 E2EE Cryptographic Protocol
+
+```
++---------------+              +--------------------+              +---------------+
+|     ALICE     |              |    BLIND RELAY     |              |      BOB      |
++-------+-------+              +---------+----------+              +-------+-------+
+        |                                |                                 |
+        | [1] Generates RoomKey (AES-GCM)|                                 |
+        |     in local browser RAM       |                                 |
+        |                                |                                 |
+        |=== Method A: Hash Link (#room=XYZ&key=K) =======================>|
+        |    (Fragment # is never sent to the server per RFC 3986)         |
+        |                                |                                 |
+        |=== Method B: Handshake ECDH (P-256) ============================>|
+        |                                |<--- KEY_REQUEST {pk_Bob} -------|
+        |<--- KEY_REQUEST {pk_Bob} ------|                                 |
+        |                                |                                 |
+        | [2] ECDH + HKDF -> K_wrap      |                                 |
+        |     AES-GCM-Wrap(RoomKey)      |                                 |
+        |                                |                                 |
+        |---- KEY_DELIVERY {wrapped_k} ->|                                 |
+        |                                |---- KEY_DELIVERY {wrapped_k} -->|
+        |                                | [3] ECDH + HKDF -> K_wrap       |
+        |                                |     AES-GCM-Unwrap -> RoomKey   |
+        |                                |                                 |
+        |================== Secure E2EE Messaging =========================|
+        |                                |                                 |
+        |---- WS: e2ee_message --------->|                                 |
+        |     {ciphertext, iv, AAD}      |---- WS: e2ee_message ---------->|
+        |                                |     (Decrypts & verifies tag)   |
+```
+
+- **Primitives:** AES-256-GCM (96-bit IV, 128-bit tag), ECDH P-256, HKDF-SHA256.
+- **Anti-MITM Verification (Out-of-Band SAS Fingerprint):**
+  - **Cannot be automated:** No browser or protocol primitive can autonomously determine whether an ephemeral public key was replaced by an active in-path adversary. True MITM protection relies on **mandatory out-of-band human verification** (voice call or in person).
+  - **Blocking UI Modal:** The v2.0 client features a blocking 4-word SAS verification modal derived from $\text{SHA-256}(\text{RoomKey})$. Message sending is locked until the user explicitly clicks "Words Match — Unlock Chat". If words do not match ("Mismatch — Abort"), the session is immediately aborted, terminating the WebSocket and purging keys from RAM.
+
+---
+
+## 📁 Zero-Knowledge File Transfer
+
+1. **Local Client-Side Encryption:** The file is bundled with metadata and encrypted in memory using `RoomKey` before transmission.
+2. **64KB Streaming Chunks:** The FastAPI server streams the body in 64 KB chunks and immediately cuts off connections with `HTTP 413 Content Too Large` if exceeding **15 MB**.
+3. **Opaque Storage & Auto-Destruction:** The server stores an opaque blob with a UUID filename (`temp_uploads/{uuid}.enc`). A background worker permanently deletes it after 10 minutes (`600s`).
+
+---
+
+## 🏗️ Ecosystem Breakdown
+
+| Repository | Tech Stack | Role |
 |---|---|---|
-| **🔐 AES-256-GCM Encryption** | Military standard for all data | ✅ Active |
-| **🔑 Diffie-Hellman** | Secure key exchange | ✅ Active |
-| **🚫 Zero Database** | No sensitive data persistence | ✅ Active |
-| **⏰ Auto-Deletion** | Intelligent automatic cleanup | ✅ Active |
-
-<div align="center">
-
-### 👤 **Absolute Anonymity**
-
-</div>
-
-| Feature | Description | Benefit |
-|---|---|---|
-| **🎭 Temporary Identities** | Auto-generated users | No registration |
-| **🌈 Unique Avatars** | Distinctive colors without personal data | Visual identification |
-| **🔄 Ephemeral Sessions** | Each connection is independent | Maximum privacy |
-| **📊 No Tracking** | Zero data collection | Total anonymity |
-
-<div align="center">
-
-### 📁 **Secure File Sharing**
-
-</div>
-
-| Specification | Value | Security |
-|---|---|---|
-| **📏 Maximum Size** | 15MB per file | ✅ Optimized |
-| **🗂️ Quantity Limit** | 5 files per user | ✅ Controlled |
-| **🔒 Encryption** | Complete AES-256-GCM | ✅ Military |
-| **⏱️ Retention** | 30 minutes maximum | ✅ Auto-cleanup |
+| **[chat-backend](https://github.com/h3n-x/chat-backend)** | FastAPI, Python 3.12+, WebSockets | Blind relay message router, streaming file server, rate limiter |
+| **[chat-frontend](https://github.com/h3n-x/chat-frontend)** | Vite, React 19, TypeScript, Tailwind v4 | SPA client with native WebCrypto API and WCAG 2.2 AA accessibility |
+| **[chat-anonimo](https://github.com/h3n-x/chat-anonimo)** | Protocol & Architecture Docs | Cryptographic protocol specification and umbrella orchestrator |
 
 ---
 
-## 🏗️ System Architecture
+## 🧪 Verification & Automated Testing
 
-<div align="center">
-
-### 🔄 **Secure Communication Flow**
-
-```mermaid
-graph TB
-    A[👤 User] --> B[🌐 Next.js Frontend]
-    B --> C[⚡ Secure WebSocket]
-    C --> D[🚀 FastAPI Backend]
-    D --> E[🔐 Encryption Engine]
-    D --> F[📁 Temporary Storage]
-    E --> G[🔑 Key Management]
-    F --> H[⏰ Auto-Cleanup]
-    
-    style A fill:#e1f5fe
-    style B fill:#f3e5f5
-    style D fill:#e8f5e8
-    style E fill:#fff3e0
-    style F fill:#fce4ec
-```
-
-</div>
-
-### 📦 **Multi-Repository Architecture**
-
-| Component | Repository | Technology | Deploy | Status |
-|---|---|---|---|---|
-| **🎨 Frontend** | [chat-frontend](https://github.com/h3n-x/chat-frontend) | Next.js 14 + TypeScript | [Netlify](https://write-ghost.netlify.app) | 🟢 Online |
-| **🚀 Backend** | [chat-backend](https://github.com/h3n-x/chat-backend) | FastAPI + Python | [Render](https://chat-backend-haeb.onrender.com) | 🟢 Online |
-
-<details>
-<summary><strong>🔧 Complete Technology Stack</strong></summary>
-
-| Layer | Technology | Purpose | Version |
-|---|---|---|---|
-| **🎨 Frontend** | Next.js + TypeScript | Modern and responsive interface | 14.x |
-| **🚀 Backend** | FastAPI + Python | Efficient API with WebSockets | 3.11+ |
-| **🔐 Encryption** | AES-256-GCM + DH | Military-grade security | Native |
-| **🌐 Deploy** | Netlify + Render | Scalable infrastructure | Cloud |
-| **💾 Storage** | Memory + Temporary | No persistence | Ephemeral |
-| **🔄 Communication** | WebSocket + HTTPS | Secure real-time | WSS/TLS |
-
-</details>
-
----
-
-## 🚀 Quick Installation
-
-<div align="center">
-
-### ⚡ **30-Second Setup**
-
-</div>
-
+### Backend (Pytest): 25 integration tests with 93% code coverage
 ```bash
-# 1. Clone repositories
-git clone https://github.com/h3n-x/chat-backend.git
-git clone https://github.com/h3n-x/chat-frontend.git
-
-# 2. Backend (Terminal 1)
-cd chat-backend && pip install -r requirements.txt && python main.py
-
-# 3. Frontend (Terminal 2)  
-cd chat-frontend && npm install && npm run dev
-```
-
-<div align="center">
-
-**🎉 Ready! Access [http://localhost:3000](http://localhost:3000)**
-
-</div>
-
-<details>
-<summary><strong>🔧 Advanced Configuration</strong></summary>
-
-### 🌐 **Environment Variables**
-
-#### Backend (.env)
-```bash
-PORT=8000
-CORS_ORIGINS=http://localhost:3000,https://write-ghost.netlify.app
-MAX_FILE_SIZE=15728640  # 15MB
-MAX_FILES_PER_USER=5
-AUTO_CLEANUP_INTERVAL=300  # 5 minutes
-```
-
-#### Frontend (.env.local)
-```bash
-NEXT_PUBLIC_WS_URL=ws://localhost:8000
-NEXT_PUBLIC_API_URL=http://localhost:8000
-NEXT_PUBLIC_MAX_FILE_SIZE=15728640
-```
-
-### 🐳 **Docker Setup**
-```bash
-# Backend
 cd chat-backend
-docker build -t chat-backend .
-docker run -p 8000:8000 chat-backend
-
-# Frontend
-cd chat-frontend  
-docker build -t chat-frontend .
-docker run -p 3000:3000 chat-frontend
+source .venv/bin/activate
+pytest --cov=app --cov-report=term-missing
 ```
 
-</details>
-
----
-
-## 📖 Usage Guide
-
-<div align="center">
-
-### 🎯 **Immediate Access - No Registration**
-
-</div>
-
-| Step | Action | Result |
-|---|---|---|
-| **1️⃣** | Access the application | Anonymous identity generated |
-| **2️⃣** | Choose room (General/Private) | Encrypted connection established |
-| **3️⃣** | Start chatting | Messages automatically encrypted |
-| **4️⃣** | Share files (optional) | Content encrypted and temporary |
-
-### 🔐 **Private Rooms**
-
-<div align="center">
-
-**Maximum privacy with independent encryption**
-
-</div>
-
+### Frontend (Vitest): WebCrypto native unit tests
 ```bash
-🚪 Create Private Room
-├── 🎲 Unique 6-digit code
-├── 👥 Maximum 10 users
-├── 🔑 Independent encryption keys
-└── ⏰ Auto-deletion when empty
+cd chat-frontend
+npm run test
+npm run build
 ```
-
-### 📁 **File Sharing**
-
-| Method | Limits | Security | Retention |
-|---|---|---|---|
-| **🖱️ Drag & Drop** | 15MB/file | AES-256-GCM | 30 min |
-| **📎 Selector** | 5 files/user | Encrypted metadata | Auto-cleanup |
-| **🖼️ Preview** | Images supported | No persistent cache | Temporary |
 
 ---
 
-## 🔍 Security Specifications
+## 🚀 Local Deployment & Execution
 
-<div align="center">
-
-### 🛡️ **Protection Matrix**
-
-</div>
-
-| Element | Encryption | Storage | Retention | Integrity |
-|---|---|---|---|---|
-| **💬 Messages** | ✅ AES-256-GCM | 🚫 Memory only | ⏰ 10 min | ✅ HMAC |
-| **📁 Files** | ✅ AES-256-GCM | 📁 Encrypted temporary | ⏰ 30 min | ✅ HMAC |
-| **🏷️ Metadata** | ✅ AES-256-GCM | 🚫 Memory only | ⏰ With file | ✅ HMAC |
-| **🔑 Keys** | ✅ Diffie-Hellman | 🚫 Memory only | ⏰ Per session | ✅ PFS |
-
-<details>
-<summary><strong>🔐 Detailed Encryption Flow</strong></summary>
-
-```mermaid
-sequenceDiagram
-    participant U1 as 👤 User 1
-    participant S as 🚀 Server
-    participant U2 as 👤 User 2
-    
-    Note over U1,U2: 🔑 Key Exchange
-    U1->>S: Connect WebSocket
-    S->>U1: Generate DH pair
-    U2->>S: Join room
-    S->>U2: DH exchange
-    S->>U1: Shared key established
-    S->>U2: Shared key established
-    
-    Note over U1,U2: 💬 Encrypted Communication
-    U1->>U1: Encrypt message (AES-256-GCM)
-    U1->>S: Send encrypted message
-    S->>U2: Relay (without decrypting)
-    U2->>U2: Decrypt message locally
+### 1. Launch Backend
+```bash
+cd chat-backend
+python3 -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt
+python main.py
 ```
 
-### 🔒 **Implemented Algorithms**
-- **Symmetric Encryption**: AES-256-GCM (Galois/Counter Mode)
-- **Key Exchange**: Diffie-Hellman Ephemeral (DHE)
-- **Hash Function**: SHA-256 for key derivation
-- **Integrity**: HMAC integrated in GCM
-- **Randomness**: CSPRNG for nonces and keys
-
-</details>
+### 2. Launch Frontend
+```bash
+cd chat-frontend
+npm install
+npm run dev
+```
 
 ---
 
-## 🌍 Deployment
-
-<div align="center">
-
-### 🎯 **Production Infrastructure**
-
-</div>
-
-| Service | URL | Status | Uptime |
-|---|---|---|---|
-| **🎨 Frontend** | [write-ghost.netlify.app](https://write-ghost.netlify.app) | 🟢 Online | 99.9% |
-| **🚀 Backend** | [chat-backend-haeb.onrender.com](https://chat-backend-haeb.onrender.com) | 🟢 Online | 99.5% |
-| **📊 Health Check** | [/health](https://chat-backend-haeb.onrender.com/health) | 🟢 Online | Monitored |
-| **📖 API Docs** | [/docs](https://chat-backend-haeb.onrender.com/docs) | 🟢 Online | Swagger UI |
-
-<details>
-<summary><strong>⚙️ Production Configuration</strong></summary>
-
-### 🔧 **Backend (Render)**
-```python
-# CORS Configuration
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["https://write-ghost.netlify.app"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
+## 📜 License
+Distributed under the MIT License. See `LICENSE` for more information.
