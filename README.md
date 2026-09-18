@@ -92,7 +92,9 @@ La versión v1.0 original de este proyecto (abandonada a mediados de 2025) prese
 ```
 
 - **Primitivas:** AES-256-GCM (96-bit IV, 128-bit tag), ECDH P-256, HKDF-SHA256.
-- **Verificación MITM (SAS Fingerprint):** Cada usuario puede contrastar visualmente un código de 4 palabras (ej. `COBALT-SHADOW-ORBIT-AURORA`) generado a partir del hash SHA-256 de la clave para confirmar que no existe un intermediario.
+- **Verificación Anti-MITM (SAS Fingerprint Out-of-Band):**
+  - **No automatizable:** El protocolo o navegador no puede saber de forma autónoma si el par de claves públicas fue manipulado en tránsito por un adversario activo. La garantía contra MITM requiere **verificación humana obligatoria fuera de banda** (voz o presencial).
+  - **Modal Bloqueante:** La interfaz presenta un modal de 4 palabras derivado de $\text{SHA-256}(\text{RoomKey})$. El envío de mensajes permanece inhabilitado hasta que el usuario confirma explícitamente la coincidencia de palabras ("Coinciden — Activar Chat"). Si se detecta discrepancia ("No Coinciden — Abortar"), la sesión se destruye de inmediato y se purgan las claves de la memoria.
 
 ---
 

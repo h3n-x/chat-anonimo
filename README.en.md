@@ -92,7 +92,9 @@ The legacy v1.0 version (abandoned in mid-2025) contained critical conceptual fl
 ```
 
 - **Primitives:** AES-256-GCM (96-bit IV, 128-bit tag), ECDH P-256, HKDF-SHA256.
-- **MITM Protection (SAS Fingerprint):** Users can visually compare a 4-word Short Authentication String (e.g. `COBALT-SHADOW-ORBIT-AURORA`) derived from `SHA-256(RoomKey)` to confirm no active man-in-the-middle.
+- **Anti-MITM Verification (Out-of-Band SAS Fingerprint):**
+  - **Cannot be automated:** No browser or protocol primitive can autonomously determine whether an ephemeral public key was replaced by an active in-path adversary. True MITM protection relies on **mandatory out-of-band human verification** (voice call or in person).
+  - **Blocking UI Modal:** The v2.0 client features a blocking 4-word SAS verification modal derived from $\text{SHA-256}(\text{RoomKey})$. Message sending is locked until the user explicitly clicks "Words Match — Unlock Chat". If words do not match ("Mismatch — Abort"), the session is immediately aborted, terminating the WebSocket and purging keys from RAM.
 
 ---
 
