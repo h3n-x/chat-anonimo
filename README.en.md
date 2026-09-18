@@ -53,9 +53,23 @@ The legacy v1.0 version (abandoned in mid-2025) contained critical conceptual fl
 - **Real Zero-Persistence:** No databases or persistent storage. Rooms and messages reside strictly in RAM while participants are connected and vanish upon exit.
 - **Metadata Privacy:** Original filenames, MIME types, and nicknames travel encrypted inside the AEAD payload.
 
-### Security Limitations (Out of Scope)
-- **Compromised Endpoints:** If a client device is infected with OS-level malware or keyloggers, endpoint security cannot be guaranteed.
-- **Link Sharing Channel:** Invitation links must be delivered through a trusted channel between participants.
+### Explicit Security Limitations (What this system DOES NOT protect against)
+
+> [!CAUTION]
+> When evaluating Chat Anónimo for high-risk communications, it is critical to understand the threat boundaries that fall **outside its security model**:
+>
+> 1. **Compromised Endpoints (Host Security):**
+>    - If the user's operating system or browser runs malware, trojans, keyloggers, or malicious browser extensions with DOM/memory access, confidentiality is lost at the source. No cryptographic protocol can protect against a compromised endpoint.
+> 2. **Omission of Out-of-Band SAS Verification:**
+>    - Protection against active Man-in-the-Middle (MITM) attacks depends **strictly on users comparing the 4-word code via a secondary, out-of-band channel** (e.g. voice call or in person). If users click *"Match"* without actually comparing words, an active in-path adversary replacing ephemeral public keys can decrypt and re-encrypt the conversation undetected.
+> 3. **Initial Link or Room Code Distribution Channel:**
+>    - Under Method A (direct URL hash fragment `#room=...&key=...`), the key fragment is never sent over HTTP per RFC 3986. However, security depends entirely on sharing the link over an already trusted and encrypted medium. Transmitting the link over SMS, unencrypted email, or monitored commercial platforms exposes the room key.
+> 4. **Network Metadata and Traffic Analysis:**
+>    - Chat Anónimo is **not an anonymous routing network (like Tor or I2P)**. ISPs, hosting providers, and network observers can see users' public IP addresses, exact connection timestamps, and traffic patterns (packet volume and transmission timing).
+> 5. **Browser Memory Persistence:**
+>    - While the application does not persist keys in `localStorage`, `sessionStorage`, or cookies, cryptographic material remains in JavaScript thread memory while the tab is open. Users must explicitly click *"Leave"* to clear keys from RAM.
+> 6. **Denial of Service (DoS):**
+>    - An attacker flooding the backend relay can disrupt service availability, even though they cannot access plaintext or keys.
 
 ---
 

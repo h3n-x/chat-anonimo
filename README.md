@@ -53,9 +53,23 @@ La versión v1.0 original de este proyecto (abandonada a mediados de 2025) prese
 - **Zero-Persistence Real:** No existe base de datos ni almacenamiento en disco permanente. Toda sala y mensaje vive únicamente en la RAM mientras haya participantes conectados.
 - **Privacidad de Metadatos:** Los nombres de archivo, tipos MIME y apodos viajan cifrados dentro del payload, no en cabeceras legibles para el servidor.
 
-### Límites de Seguridad (Qué NO protege)
-- **Compromiso del Endpoint Local:** Si el dispositivo físico del usuario está infectado con malware o keyloggers a nivel de sistema operativo, la seguridad local no puede ser garantizada.
-- **Canal de Compartición de Enlaces:** La entrega del enlace de invitación debe realizarse mediante un canal de confianza entre las partes.
+### Límites de Seguridad Explícitos (Qué NO protege este sistema)
+
+> [!CAUTION]
+> Para evaluar la idoneidad de Chat Anónimo en contextos de alto riesgo, es crítico comprender qué vectores de ataque están **fuera de su alcance de protección**:
+>
+> 1. **Dispositivos finales comprometidos (Endpoint Security):**
+>    - Si el sistema operativo o navegador de cualquiera de los participantes aloja malware, troyanos, keyloggers o extensiones de navegador con permisos de acceso al DOM o memoria, la confidencialidad se pierde en el propio origen. Ningún algoritmo E2EE puede proteger contra un host físicamente o lógicamente vulnerado.
+> 2. **Omisión de la verificación SAS fuera de banda:**
+>    - La protección contra ataques Man-in-the-Middle (MITM) activos depende **exclusivamente de que los usuarios comparen las 4 palabras por un canal secundario independiente** (ej. voz o en persona). Si los usuarios hacen clic en *"Coinciden"* sin realizar la comprobación real, un intermediario activo que intercepte y reemplace las claves públicas efímeras de ECDH podrá descifrar y retransmitir la comunicación.
+> 3. **Seguridad del canal de distribución de enlaces:**
+>    - En el Método A (enlace directo con `#room=...&key=...`), el fragmento hash jamás viaja al servidor por estándar RFC 3986. Sin embargo, la seguridad de la sala depende de que el enlace se transmita a través de un canal ya cifrado y confiable. Si el enlace se envía por SMS, correo electrónico en texto plano o mensajería intervenida, la clave de sala queda expuesta a terceros.
+> 4. **Metadatos de red y análisis de tráfico:**
+>    - Chat Anónimo **no es una red de enrutamiento anónimo (como Tor o I2P)**. Los proveedores de servicio de Internet (ISP), el servidor backend y los proveedores de infraestructura pueden ver las direcciones IP públicas de los participantes, marcas de tiempo de conexión/desconexión y el volumen/frecuencia de frames transmitidos.
+> 5. **Persistencia en la memoria RAM del navegador:**
+>    - Aunque el sistema no almacena claves ni mensajes en `localStorage`, `sessionStorage` ni `IndexedDB`, el material criptográfico reside en la memoria del hilo de JavaScript mientras la pestaña permanezca abierta. El usuario debe pulsar *"Salir"* para purgar las variables de estado.
+> 6. **Disponibilidad del Servicio (DoS):**
+>    - Un adversario con capacidad de inundar el servidor relay o el enlace de red puede interrumpir la disponibilidad de las salas, aunque no pueda acceder al contenido cifrado.
 
 ---
 
