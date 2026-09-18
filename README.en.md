@@ -10,7 +10,7 @@
 
 **Open-source ephemeral communication platform engineered on the principle of Zero Trust in the Server (*Zero-Knowledge Blind Relay*).**
 
-[![🚀 Live Demo](https://img.shields.io/badge/🚀_Demo-Netlify-success?style=for-the-badge&logo=netlify)](https://write-ghost.netlify.app)
+[![🚀 Live Demo](https://img.shields.io/badge/🚀_Demo-Netlify-success?style=for-the-badge&logo=netlify)](https://chat-zk.netlify.app)
 [![📖 Versión en Español](https://img.shields.io/badge/📖_Leer-Español-green?style=for-the-badge)](README.md)
 [![Backend Repository](https://img.shields.io/badge/Backend-chat--backend-teal?style=for-the-badge&logo=fastapi)](https://github.com/h3n-x/chat-backend)
 [![Frontend Repository](https://img.shields.io/badge/Frontend-chat--frontend-cyan?style=for-the-badge&logo=react)](https://github.com/h3n-x/chat-frontend)
